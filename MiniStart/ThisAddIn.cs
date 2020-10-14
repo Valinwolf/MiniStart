@@ -10,7 +10,7 @@ namespace MiniStart
 {
     public partial class ThisAddIn
     {
-        System.Timers.Timer timer = new System.Timers.Timer(500);
+        System.Timers.Timer timer = new System.Timers.Timer(1200);
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             Application.Startup += Application_Startup;
