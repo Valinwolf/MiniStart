@@ -8,7 +8,7 @@ using Office = Microsoft.Office.Core;
 
 namespace MiniStart
 {
-    public partial class ThisAddIn
+    public partial class MiniStart
     {
         System.Timers.Timer timer = new System.Timers.Timer(1200);
         private void ThisAddIn_Startup(object sender, System.EventArgs e)

@@ -15,7 +15,7 @@ namespace MiniStart {
     /// 
     [Microsoft.VisualStudio.Tools.Applications.Runtime.StartupObjectAttribute(0)]
     [global::System.Security.Permissions.PermissionSetAttribute(global::System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
-    public sealed partial class ThisAddIn : Microsoft.Office.Tools.Outlook.OutlookAddInBase {
+    public sealed partial class MiniStart : Microsoft.Office.Tools.Outlook.OutlookAddInBase {
         
         internal Microsoft.Office.Tools.CustomTaskPaneCollection CustomTaskPanes;
         
@@ -28,7 +28,7 @@ namespace MiniStart {
         /// 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public ThisAddIn(global::Microsoft.Office.Tools.Outlook.Factory factory, global::System.IServiceProvider serviceProvider) : 
+        public MiniStart(global::Microsoft.Office.Tools.Outlook.Factory factory, global::System.IServiceProvider serviceProvider) : 
                 base(factory, serviceProvider, "AddIn", "ThisAddIn") {
             Globals.Factory = factory;
         }
@@ -40,7 +40,7 @@ namespace MiniStart {
         protected override void Initialize() {
             base.Initialize();
             this.Application = this.GetHostItem<Microsoft.Office.Interop.Outlook.Application>(typeof(Microsoft.Office.Interop.Outlook.Application), "Application");
-            Globals.ThisAddIn = this;
+            Globals.MiniStart = this;
             global::System.Windows.Forms.Application.EnableVisualStyles();
             this.InitializeCachedData();
             this.InitializeControls();
@@ -174,21 +174,21 @@ namespace MiniStart {
         private Globals() {
         }
         
-        private static ThisAddIn _ThisAddIn;
+        private static MiniStart _MiniStart;
         
         private static global::Microsoft.Office.Tools.Outlook.Factory _factory;
         
         private static ThisRibbonCollection _ThisRibbonCollection;
-
+        
         private static ThisFormRegionCollection _ThisFormRegionCollection;
         
-        internal static ThisAddIn ThisAddIn {
+        internal static MiniStart MiniStart {
             get {
-                return _ThisAddIn;
+                return _MiniStart;
             }
             set {
-                if ((_ThisAddIn == null)) {
-                    _ThisAddIn = value;
+                if ((_MiniStart == null)) {
+                    _MiniStart = value;
                 }
                 else {
                     throw new System.NotSupportedException();
@@ -222,7 +222,7 @@ namespace MiniStart {
         internal static ThisFormRegionCollection FormRegions {
             get {
                 if ((_ThisFormRegionCollection == null)) {
-                    _ThisFormRegionCollection = new ThisFormRegionCollection(Globals.ThisAddIn.GetFormRegions());
+                    _ThisFormRegionCollection = new ThisFormRegionCollection(Globals.MiniStart.GetFormRegions());
                 }
                 return _ThisFormRegionCollection;
             }
@@ -263,13 +263,13 @@ namespace MiniStart {
         
         internal WindowFormRegionCollection this[Microsoft.Office.Interop.Outlook.Explorer explorer] {
             get {
-                return ((WindowFormRegionCollection)(Globals.ThisAddIn.GetFormRegions(explorer, typeof(WindowFormRegionCollection))));
+                return ((WindowFormRegionCollection)(Globals.MiniStart.GetFormRegions(explorer, typeof(WindowFormRegionCollection))));
             }
         }
         
         internal WindowFormRegionCollection this[Microsoft.Office.Interop.Outlook.Inspector inspector] {
             get {
-                return ((WindowFormRegionCollection)(Globals.ThisAddIn.GetFormRegions(inspector, typeof(WindowFormRegionCollection))));
+                return ((WindowFormRegionCollection)(Globals.MiniStart.GetFormRegions(inspector, typeof(WindowFormRegionCollection))));
             }
         }
     }
